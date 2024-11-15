@@ -1,7 +1,7 @@
 @import "https://unpkg.com/open-props/easings.min.css";
 
 :root {
-    /* spotify colors*/
+    /* Spotify colors */
     --spotify-green: #1ed760;
     --spotify-black: #121212;
     --spotify-white: #ffffff;
@@ -9,13 +9,12 @@
     --spotify-darkGrey: #222222;
 }
 
-/* reset */
-
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 1rem;
+    font-family: Arial, sans-serif;
 }
 
 img,
@@ -25,55 +24,103 @@ svg {
     height: auto;
 }
 
-/* global page styles */
+/* Body styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--spotify-black);
+    color: var(--spotify-white);
+}
 
-html {}
+/* Album card styling */
+.album {
+    background-color: var(--spotify-darkGrey);
+    border-radius: 12px;
+    width: 250px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
 
-/* center everything */
+.album__img {
+    width: 100%;
+    border-radius: 8px;
+}
 
-body {}
+.album__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
 
-/*
-    Object: Button reset
-    ---
-    Small button reset object
-*/
+.album__text {
+    flex-grow: 1;
+}
 
+.album__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--spotify-white);
+    margin-bottom: 4px;
+}
+
+.album__artist {
+    font-size: 0.9rem;
+    color: var(--spotify-grey);
+}
+
+/* Button reset styles */
 .button-reset {
     border: none;
     margin: 0;
     padding: 0;
-    width: auto;
-    overflow: visible;
     background: transparent;
-
-    /* inherit font & color from ancestor */
     color: inherit;
     font: inherit;
-
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
     line-height: normal;
-
-    /* Corrects font smoothing for webkit */
+    cursor: pointer;
     -webkit-font-smoothing: inherit;
     -moz-osx-font-smoothing: inherit;
-
-    /* Corrects inability to style clickable `input` types in iOS */
     -webkit-appearance: none;
 }
 
-/*
-    Toggle button
-*/
+/* Toggle button styles */
+.album__action {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
 
-/*
-    Album
-*/
+/* Styles for the green checkmark state */
+.album__action[aria-pressed="true"] {
+    background-color: var(--spotify-green);
+    color: var(--spotify-white);
+}
 
-/*
-    Utitlities
-*/
+/* Icon styles */
+.icon--add, .icon--check {
+    width: 24px;
+    height: 24px;
+}
 
-.color-grey {
-    color: var(--spotify-grey);
+.hidden {
+    display: none;
+}
+
+/* Toggle icon display based on button state */
+.album__action[aria-pressed="true"] .icon--add {
+    display: none;
+}
+
+.album__action[aria-pressed="false"] .icon--check {
+    display: none;
 }
